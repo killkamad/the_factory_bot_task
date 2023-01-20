@@ -61,6 +61,7 @@ class CheckTokenForTelegram(APIView):
         if token and chat_id:
             user = User.objects.filter(telegram_token=token, telegram_id__isnull=True)
             if user:
+                User.objects.filter(telegram_id=chat_id).update(telegram_id=None)  # unlinked existing user if exist
                 user.update(telegram_id=chat_id)
                 return Response({'message': 'Your chat id was linked'})
         return Response({'message': 'Not valid token'})
