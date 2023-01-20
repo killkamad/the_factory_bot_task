@@ -12,7 +12,6 @@ def handle_token(message):
         "chat_id": message.chat.id,
         "token": token
     })
-    print(r)
     bot.reply_to(message, r.json()['message'])
 
 bot.polling()
