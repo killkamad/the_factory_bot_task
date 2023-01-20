@@ -8,7 +8,7 @@ bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
 @bot.message_handler(func=lambda m: m.text.startswith("token"))
 def handle_token(message):
     token = message.text[5:]
-    r = requests.post('http://127.0.0.1:8000/api/check-token/', json={
+    r = requests.post('http://0.0.0.0:8000/api/check-token/', json={
         "chat_id": message.chat.id,
         "token": token
     })
