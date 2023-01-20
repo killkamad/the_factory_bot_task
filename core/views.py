@@ -27,7 +27,7 @@ class SendMessage(CreateAPIView):
 
 class ListMessages(ListAPIView):
     permission_classes = (IsAuthenticated,)
-    queryset = Messages.objects.all()
+    queryset = Messages.objects.all().order_by('-date_time')
     serializer_class = ListMessagesSerializer
 
     def get_queryset(self):
